@@ -6,7 +6,10 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "prettier": "prettier --write .",
+    "lint": "eslint --fix . --ext .js,.jsx,.ts,.tsx",
+    "format": "yarn prettier && yarn lint"
   },
   "dependencies": {
     "react": "^18.2.0",
