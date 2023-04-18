@@ -1,0 +1,17 @@
+.search {
+  position: relative;
+  display: flex;
+  max-width: 350px;
+  padding: 4px;
+  width: 100%;
+}
+
+.searchTerm {
+  width: 100%;
+  border: 2px solid #c1c1c1;
+  padding: 16px;
+  height: 22px;
+  border-radius: 8px;
+  outline: none;
+  color: #000;
+}
