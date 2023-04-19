@@ -10,7 +10,6 @@ const HomeView = () => {
   const { search: filterEntries, updateSearch: setFilterEntries } = useSearch();
 
   const filteredEntries = useMemo(() => {
-    console.log('memo');
     return filterEntries != null
       ? entries?.filter(el =>
           el.title.toLowerCase().includes(filterEntries.toLocaleLowerCase())
@@ -21,7 +20,7 @@ const HomeView = () => {
   return (
     <div>
       <div className={styles.header}>
-        <span className={styles.count}>{entries?.length}</span>
+        <span className={styles.count}>{filteredEntries?.length}</span>
         <SearchBar
           value={filterEntries}
           onChangeEntries={(e: any) => {
