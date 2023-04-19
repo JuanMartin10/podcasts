@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react';
 import { fetchFeed } from '../services';
 import { type AppEntry } from '../models/types';
+import { useAppContext } from '../context/app-context';
 
 export const useEntries = () => {
   const [entries, setEntries] = useState<AppEntry[] | undefined>();
-  const [loading, setLoading] = useState(false);
+  const { loading, setLoading } = useAppContext();
 
   const getEntries = async () => {
     try {

@@ -3,10 +3,11 @@ import { Link } from 'react-router-dom';
 import { BounceLoader } from 'react-spinners';
 
 import styles from './Header.module.css';
+import { useAppContext } from '../../../context/app-context';
 
 const Header = () => {
-  const [loading, setLoading] = useState(true);
   const [color, setColor] = useState('#508fcb');
+  const { loading } = useAppContext();
 
   return (
     <header className={styles.header}>
@@ -14,13 +15,15 @@ const Header = () => {
         <Link to='/'>Podcaster</Link>
       </div>
       <div className={styles.shoppingBag}>
-        <BounceLoader
-          color={color}
-          loading={loading}
-          size={20}
-          aria-label='Loading Spinner'
-          data-testid='loader'
-        />
+        {Boolean(loading) && (
+          <BounceLoader
+            color={color}
+            loading={loading}
+            size={20}
+            aria-label='Loading Spinner'
+            data-testid='loader'
+          />
+        )}
       </div>
     </header>
   );
