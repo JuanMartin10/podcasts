@@ -10,23 +10,24 @@ export const useEntries = () => {
   const [expirationValue, setExpirationValue] = useExpirationStorage();
   const [entriesStorage, setEntriesStorage] = useEntriesStorage();
 
-  const checkHour = () => {
+  const checkHour = async () => {
     const hours = 24;
     const now = new Date().getTime();
     if (
       expirationValue === '' ||
       now - expirationValue > hours * 60 * 60 * 1000
     ) {
+      // setLoading(true);
       localStorage.clear();
       setExpirationValue(now);
-      getEntries();
+      await getEntries();
     } else {
       setEntries(entriesStorage);
     }
   };
+
   const getEntries = async () => {
     try {
-      setLoading(true);
       const feed = await fetchFeed();
       const mappedEntries: AppEntry[] = feed.entry.map(entry => ({
         id: entry.id.attributes['im:id'],
@@ -38,12 +39,13 @@ export const useEntries = () => {
       setEntries(mappedEntries);
     } catch (error) {
       console.error(error);
-    } finally {
-      setLoading(false);
     }
   };
+
   useEffect(() => {
+    setLoading(true);
     checkHour();
+    setLoading(false);
   }, []);
 
   return { entries, loading, getEntries, setEntries };
