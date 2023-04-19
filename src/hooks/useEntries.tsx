@@ -1,16 +1,22 @@
 import { useState, useEffect } from 'react';
-import { type Entry } from '../models/types';
 import { fetchFeed } from '../services';
+import { type AppEntry } from '../models/types';
 
 export const useEntries = () => {
-  const [entries, setEntries] = useState<Entry[] | undefined>();
+  const [entries, setEntries] = useState<AppEntry[] | undefined>();
   const [loading, setLoading] = useState(false);
 
   const getEntries = async () => {
     try {
       setLoading(true);
       const feed = await fetchFeed();
-      setEntries(feed.entry);
+      const mappedEntries: AppEntry[] = feed.entry.map(entry => ({
+        id: entry.id.attributes['im:id'],
+        title: entry['im:name'].label,
+        artist: entry['im:artist'].label,
+        image: entry['im:image'][0].label,
+      }));
+      setEntries(mappedEntries);
     } catch (error) {
       console.error(error);
     } finally {

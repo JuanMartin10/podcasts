@@ -1,4 +1,4 @@
-import { type Feed } from '../models/types';
+import { type Feed } from '../models/api-types';
 
 const API_URL =
   'https://itunes.apple.com/us/rss/toppodcasts/limit=100/genre=1310/json';

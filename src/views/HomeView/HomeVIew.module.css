@@ -1,0 +1,23 @@
+.main {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 24px;
+  margin-top: 24px;
+}
+
+.header {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+
+.count {
+  background-color: #508fcb;
+  padding: 2px 4px;
+  color: #fff;
+  border-radius: 4px;
+  font-weight: 700;
+}
