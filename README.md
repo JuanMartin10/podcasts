@@ -1,5 +1,6 @@
 ## How can I see this project on production?
 This project is hosted on Vercel, you can view it at this URL:
+
 ```sh
 https://podcasts-mauve.vercel.app/
 ```
@@ -21,7 +22,6 @@ yarn install
 
 ### Step 2: Development
 
--
 
 ```sh
 yarn dev
@@ -34,5 +34,6 @@ Then, Your browser will open at http://localhost:5173 to view it, and it will re
 ```sh
 yarn build && yarn run preview
 ```
+
 Then, Your browser will open at http://localhost:4173 to view it.
 
