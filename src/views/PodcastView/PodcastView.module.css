@@ -1,0 +1,50 @@
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.episodesContainer {
+  box-shadow: 0.12em 0.25em 0.5em 0.25em rgba(0, 0, 0, 0.1);
+  padding: 16px;
+}
+.episodesTitle {
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+.episodesList {
+  box-shadow: 0.12em 0.25em 0.5em 0.25em rgba(0, 0, 0, 0.1);
+  list-style-type: none;
+  padding: 0;
+  margin: 24px 0;
+}
+
+th {
+  text-align: left;
+  padding: 8px;
+}
+
+.table td {
+  padding: 8px;
+}
+.table tr:nth-child(odd) {
+  background: #f1f1f1;
+}
+
+.table tr:nth-child(even) {
+  background: #fff;
+}
+
+.episodeItem {
+  margin-bottom: 0.5rem;
+}
+
+.episodeTitle {
+  font-size: 1.2rem;
+  margin-bottom: 0.2rem;
+}
+
+.episodeDate {
+  font-size: 1rem;
+  color: #666;
+}
