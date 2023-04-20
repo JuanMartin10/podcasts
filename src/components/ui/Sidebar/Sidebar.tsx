@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { type AppEntry } from '../../../../models/types';
+import { type AppEntry } from '../../../models/types';
 import styles from './Sidebar.module.css';
 
 interface SidebarProps {

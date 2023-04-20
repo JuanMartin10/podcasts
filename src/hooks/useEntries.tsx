@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
+import { useEntriesStorage, useExpirationStorage } from './useLocalStorage';
 import { fetchFeed } from '../services';
 import { type AppEntry } from '../models/types';
-import { useEntriesStorage, useExpirationStorage } from './useLocalStorage';
 
-export const useEntries = (loading, setLoading) => {
+export const useEntries = ({ loading, setLoading }: any) => {
   const [entries, setEntries] = useState<AppEntry[] | undefined>();
   const [expirationValue, setExpirationValue] = useExpirationStorage();
   const [entriesStorage, setEntriesStorage] = useEntriesStorage();
@@ -44,14 +44,14 @@ export const useEntries = (loading, setLoading) => {
   };
 
   useEffect(() => {
-    setLoading(true);
     checkHour();
-    setLoading(false);
   }, []);
 
   return {
+    // loading,
     entries,
     getEntries,
     setEntries,
+    // setLoading,
   };
 };

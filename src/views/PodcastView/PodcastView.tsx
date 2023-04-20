@@ -1,12 +1,11 @@
 import { useEffect, useState } from 'react';
-import styles from './PodcastView.module.css';
 import { Link, useParams } from 'react-router-dom';
-import { type ResultPodcast } from '../../models/api-podcast.types';
-import DetailsLayout from '../../layout/DetailsLayout/DetailsLayout';
 import { useAppContext } from '../../context/app-context';
-import { fetchEpisodesByPodcast } from '../../services';
-import { isEmpty } from '../../util/validations';
+import DetailsLayout from '../../layout/DetailsLayout/DetailsLayout';
+import { type ResultPodcast } from '../../models/api-podcast.types';
 import { formatDate, formatTime } from '../../util/functions';
+import { fetchEpisodesByPodcast } from '../../services';
+import styles from './PodcastView.module.css';
 
 const PodcastView = () => {
   const { entries, currentPodcast, setLoading, setCurrentPodcast } =
@@ -15,10 +14,11 @@ const PodcastView = () => {
   const { podcastId } = useParams();
 
   useEffect(() => {
+    if (entries === null) return;
     setLoading(true);
     const podcastFromStorage = localStorage.getItem(`podcast_${podcastId}`);
-    if (entries == null) return;
-    if (podcastFromStorage == null) {
+
+    if (podcastFromStorage === null) {
       const p = entries?.find((el: any) => el.id === podcastId?.toString());
       const objToSave = { podcast: p };
       fetchEpisodesByPodcast(podcastId as string).then(res => {
@@ -36,9 +36,7 @@ const PodcastView = () => {
     }
   }, [entries]);
 
-  useEffect(() => {}, [currentPodcast]);
-
-  return isEmpty(currentPodcast as undefined) ? (
+  return currentPodcast == null ? (
     <div className={styles.center}>
       <p>Cargando datos...</p>
     </div>

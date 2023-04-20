@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from 'react';
+import { createContext, useContext, useEffect, useState } from 'react';
 import { useEntries } from '../hooks/useEntries';
 import { type AppEntry } from '../models/types';
 
@@ -22,7 +22,11 @@ export const AppProvider: React.FC<ContextProps> = ({ children }) => {
   const [loading, setLoading] = useState(false);
   const [currentPodcast, setCurrentPodcast] = useState<AppEntry>();
 
-  const { entries, getEntries, setEntries } = useEntries(loading, setLoading);
+  const { entries, getEntries, setEntries } = useEntries({
+    loading,
+    setLoading,
+  });
+  console.log('loading en context', loading, entries);
 
   return (
     <AppContext.Provider
