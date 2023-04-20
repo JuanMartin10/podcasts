@@ -2,9 +2,8 @@ import { useMemo } from 'react';
 import SearchBar from '../../components/Searchbar/SearchBar';
 import { useSearch } from '../../hooks/useSearch';
 import Card from '../../components/Card/Card';
-import { type AppContextTypes, useAppContext } from '../../context/app-context';
+import { useAppContext } from '../../context/app-context';
 import styles from './HomeView.module.css';
-import { AppEntry } from '../../models/types';
 
 const HomeView = () => {
   const { entries, loading } = useAppContext();
@@ -40,8 +39,8 @@ const HomeView = () => {
         (filteredEntries.length > 0 && loading) ? (
           <p>Cargando...</p>
         ) : (
-          <p>pintando</p>
-          // filteredEntries?.map(en => <Card key={en.id} entry={en} />)
+          //  <p>pintando</p>
+          filteredEntries?.map(en => <Card key={en.id} entry={en} />)
         )}
       </div>
     </div>
