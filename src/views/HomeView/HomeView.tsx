@@ -2,25 +2,30 @@ import { useMemo } from 'react';
 import SearchBar from '../../components/Searchbar/SearchBar';
 import { useSearch } from '../../hooks/useSearch';
 import Card from '../../components/Card/Card';
-import { useAppContext } from '../../context/app-context';
+import { type AppContextTypes, useAppContext } from '../../context/app-context';
 import styles from './HomeView.module.css';
+import { AppEntry } from '../../models/types';
 
 const HomeView = () => {
   const { entries, loading } = useAppContext();
   const { search: filterEntries, updateSearch: setFilterEntries } = useSearch();
 
   const filteredEntries = useMemo(() => {
-    return filterEntries != null
-      ? entries?.filter(el =>
-          el.title.toLowerCase().includes(filterEntries.toLocaleLowerCase())
-        )
-      : entries;
+    if (entries !== undefined) {
+      return filterEntries !== undefined && entries.length > 0
+        ? entries?.filter(el =>
+            el.title.toLowerCase().includes(filterEntries.toLocaleLowerCase())
+          )
+        : entries;
+    }
   }, [entries, filterEntries]);
+  // debugger;
+  console.log(typeof filteredEntries, '-');
 
   return (
     <div>
       <div className={styles.header}>
-        {filteredEntries != null && (
+        {filteredEntries !== undefined && (
           <span className={styles.count}>{filteredEntries?.length}</span>
         )}
         <SearchBar
@@ -31,10 +36,12 @@ const HomeView = () => {
         />
       </div>
       <div className={styles.main}>
-        {loading ? (
+        {filteredEntries === undefined ||
+        (filteredEntries.length > 0 && loading) ? (
           <p>Cargando...</p>
         ) : (
-          filteredEntries?.map(en => <Card key={en.id} entry={en} />)
+          <p>pintando</p>
+          // filteredEntries?.map(en => <Card key={en.id} entry={en} />)
         )}
       </div>
     </div>

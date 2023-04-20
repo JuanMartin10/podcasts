@@ -2,7 +2,7 @@ import { createContext, useContext, useEffect, useState } from 'react';
 import { useEntries } from '../hooks/useEntries';
 import { type AppEntry } from '../models/types';
 
-interface AppContextTypes {
+export interface AppContextTypes {
   loading: boolean;
   entries: AppEntry[] | undefined;
   currentPodcast: AppEntry | undefined;
