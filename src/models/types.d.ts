@@ -3,6 +3,7 @@ export interface AppEntry {
   title: string;
   artist: string;
   image: string;
+  summary?: string;
 }
 
 export interface AppPodcast {

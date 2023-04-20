@@ -4,10 +4,12 @@ import { type AppEntry } from '../models/types';
 
 interface AppContextTypes {
   loading: boolean;
-  setLoading: React.Dispatch<React.SetStateAction<boolean>>;
   entries: AppEntry[] | undefined;
-  setEntries: React.Dispatch<React.SetStateAction<AppEntry[] | undefined>>;
+  currentPodcast: AppEntry | undefined;
   getEntries: () => Promise<void>;
+  setLoading: React.Dispatch<React.SetStateAction<boolean>>;
+  setEntries: React.Dispatch<React.SetStateAction<AppEntry[] | undefined>>;
+  setCurrentPodcast: React.Dispatch<React.SetStateAction<AppEntry | undefined>>;
 }
 
 interface ContextProps {
@@ -18,11 +20,21 @@ const AppContext = createContext<AppContextTypes | undefined>(undefined);
 
 export const AppProvider: React.FC<ContextProps> = ({ children }) => {
   const [loading, setLoading] = useState(false);
+  const [currentPodcast, setCurrentPodcast] = useState<AppEntry>();
+
   const { entries, getEntries, setEntries } = useEntries(loading, setLoading);
 
   return (
     <AppContext.Provider
-      value={{ loading, setLoading, entries, setEntries, getEntries }}
+      value={{
+        loading,
+        entries,
+        currentPodcast,
+        getEntries,
+        setLoading,
+        setEntries,
+        setCurrentPodcast,
+      }}
     >
       {children}
     </AppContext.Provider>

@@ -5,15 +5,14 @@ import { type ResultPodcast } from '../../models/api-podcast.types';
 import DetailsLayout from '../../layout/DetailsLayout/DetailsLayout';
 import { useAppContext } from '../../context/app-context';
 import { fetchEpisodesByPodcast } from '../../services';
-import { type AppEntry } from '../../models/types';
 import { isEmpty } from '../../util/validations';
 import { formatDate, formatTime } from '../../util/functions';
 
 const PodcastView = () => {
-  const { entries, setLoading } = useAppContext();
+  const { entries, currentPodcast, setLoading, setCurrentPodcast } =
+    useAppContext();
   const [episodes, setEpisodes] = useState<ResultPodcast[] | undefined>();
   const { podcastId } = useParams();
-  const [currentPodcast, setCurrentPodcast] = useState<AppEntry>();
 
   useEffect(() => {
     setLoading(true);
@@ -65,6 +64,7 @@ const PodcastView = () => {
                   <td>
                     <Link
                       to={`/podcast/${podcastId}/episode/${episode.trackId}`}
+                      state={episode}
                     >
                       {episode.trackName}
                     </Link>
