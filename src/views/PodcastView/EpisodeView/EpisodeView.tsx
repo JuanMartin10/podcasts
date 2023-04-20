@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useAppContext } from '../../../context/app-context';
 import DetailsLayout from '../../../layout/DetailsLayout/DetailsLayout';
@@ -7,9 +6,7 @@ import styles from './EpisodeView.module.css';
 const EpisodeView = () => {
   const { currentPodcast } = useAppContext();
   const { state: episode } = useLocation();
-  console.log(episode);
-  console.log('currentPodcast', currentPodcast);
-  useEffect(() => {}, [currentPodcast]);
+
   return (
     <DetailsLayout currentPodcast={currentPodcast}>
       <div className={styles.play}>

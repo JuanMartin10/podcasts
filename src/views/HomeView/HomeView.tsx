@@ -18,8 +18,6 @@ const HomeView = () => {
         : entries;
     }
   }, [entries, filterEntries]);
-  // debugger;
-  console.log(typeof filteredEntries, '-');
 
   return (
     <div>
@@ -39,7 +37,6 @@ const HomeView = () => {
         (filteredEntries.length > 0 && loading) ? (
           <p>Cargando...</p>
         ) : (
-          //  <p>pintando</p>
           filteredEntries?.map(en => <Card key={en.id} entry={en} />)
         )}
       </div>
