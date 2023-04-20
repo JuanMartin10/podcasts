@@ -1,7 +1,13 @@
 import { createContext, useContext, useState } from 'react';
+import { useEntries } from '../hooks/useEntries';
+import { type AppEntry } from '../models/types';
+
 interface AppContextTypes {
   loading: boolean;
   setLoading: React.Dispatch<React.SetStateAction<boolean>>;
+  entries: AppEntry[] | undefined;
+  setEntries: React.Dispatch<React.SetStateAction<AppEntry[] | undefined>>;
+  getEntries: () => Promise<void>;
 }
 
 interface ContextProps {
@@ -12,9 +18,12 @@ const AppContext = createContext<AppContextTypes | undefined>(undefined);
 
 export const AppProvider: React.FC<ContextProps> = ({ children }) => {
   const [loading, setLoading] = useState(false);
+  const { entries, getEntries, setEntries } = useEntries(loading, setLoading);
 
   return (
-    <AppContext.Provider value={{ loading, setLoading }}>
+    <AppContext.Provider
+      value={{ loading, setLoading, entries, setEntries, getEntries }}
+    >
       {children}
     </AppContext.Provider>
   );

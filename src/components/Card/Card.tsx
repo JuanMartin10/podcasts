@@ -9,7 +9,7 @@ const Card: React.FC<CardProps> = ({ entry }) => {
   const { id, title, image, artist } = entry;
 
   return (
-    <Link to={`/${id}`} style={{ textDecoration: 'none' }}>
+    <Link to={`/podcast/${id}`} style={{ textDecoration: 'none' }}>
       <div className={styles.item}>
         <div className={styles.image}>
           <img src={image} alt={`${title}-${image}`} />

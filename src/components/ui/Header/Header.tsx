@@ -6,7 +6,7 @@ import styles from './Header.module.css';
 import { useAppContext } from '../../../context/app-context';
 
 const Header = () => {
-  const [color, setColor] = useState('#508fcb');
+  const [color] = useState('#508fcb');
   const { loading } = useAppContext();
 
   return (

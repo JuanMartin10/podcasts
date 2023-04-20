@@ -1,12 +1,10 @@
 import { useState, useEffect } from 'react';
 import { fetchFeed } from '../services';
 import { type AppEntry } from '../models/types';
-import { useAppContext } from '../context/app-context';
 import { useEntriesStorage, useExpirationStorage } from './useLocalStorage';
 
-export const useEntries = () => {
+export const useEntries = (loading, setLoading) => {
   const [entries, setEntries] = useState<AppEntry[] | undefined>();
-  const { loading, setLoading } = useAppContext();
   const [expirationValue, setExpirationValue] = useExpirationStorage();
   const [entriesStorage, setEntriesStorage] = useEntriesStorage();
 
@@ -17,7 +15,6 @@ export const useEntries = () => {
       expirationValue === '' ||
       now - expirationValue > hours * 60 * 60 * 1000
     ) {
-      // setLoading(true);
       localStorage.clear();
       setExpirationValue(now);
       await getEntries();
@@ -28,17 +25,21 @@ export const useEntries = () => {
 
   const getEntries = async () => {
     try {
+      setLoading(true);
       const feed = await fetchFeed();
       const mappedEntries: AppEntry[] = feed.entry.map(entry => ({
         id: entry.id.attributes['im:id'],
         title: entry['im:name'].label,
         artist: entry['im:artist'].label,
         image: entry['im:image'][0].label,
+        summary: entry.summary.label,
       }));
       setEntriesStorage(mappedEntries);
       setEntries(mappedEntries);
     } catch (error) {
       console.error(error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -48,5 +49,9 @@ export const useEntries = () => {
     setLoading(false);
   }, []);
 
-  return { entries, loading, getEntries, setEntries };
+  return {
+    entries,
+    getEntries,
+    setEntries,
+  };
 };
