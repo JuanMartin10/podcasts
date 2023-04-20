@@ -2,8 +2,8 @@ import { useMemo } from 'react';
 import SearchBar from '../../components/Searchbar/SearchBar';
 import { useSearch } from '../../hooks/useSearch';
 import Card from '../../components/Card/Card';
-import styles from './HomeView.module.css';
 import { useAppContext } from '../../context/app-context';
+import styles from './HomeView.module.css';
 
 const HomeView = () => {
   const { entries, loading } = useAppContext();
