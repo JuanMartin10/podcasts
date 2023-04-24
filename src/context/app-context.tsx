@@ -1,6 +1,6 @@
 import { createContext, useContext, useState } from 'react';
-import { useEntries } from '../hooks/useEntries';
-import { type AppEntry } from '../models/types';
+import { useEntries } from 'hooks/useEntries';
+import { type AppEntry } from 'models/types';
 
 export interface AppContextTypes {
   loading: boolean;

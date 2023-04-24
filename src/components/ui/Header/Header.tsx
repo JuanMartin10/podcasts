@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { BounceLoader } from 'react-spinners';
+import { HOME_PATH } from 'routes';
+import { useAppContext } from 'context/app-context';
 
 import styles from './Header.module.css';
-import { useAppContext } from '../../../context/app-context';
-import { HOME_PATH } from '../../../routes';
 
 const Header = () => {
   const [color] = useState('#508fcb');

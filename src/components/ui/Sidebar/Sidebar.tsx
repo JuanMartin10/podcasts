@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
-import { type AppEntry } from '../../../models/types';
+import { type AppEntry } from 'models/types';
 import styles from './Sidebar.module.css';
-import { PODCAST_PATH } from '../../../routes';
+import { PODCAST_PATH } from 'routes';
 
 interface SidebarProps {
   currentPodcast: AppEntry;

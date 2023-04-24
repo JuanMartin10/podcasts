@@ -1,6 +1,6 @@
 import { useLocation } from 'react-router-dom';
-import { useAppContext } from '../../../context/app-context';
-import DetailsLayout from '../../../layout/DetailsLayout/DetailsLayout';
+import { useAppContext } from 'context/app-context';
+import DetailsLayout from 'layout/DetailsLayout/DetailsLayout';
 import styles from './EpisodeView.module.css';
 
 const EpisodeView = () => {

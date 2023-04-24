@@ -1,8 +1,8 @@
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
-import Layout from '../layout/Layout';
-import HomeView from '../views/HomeView/HomeView';
-import EpisodeView from '../views/PodcastView/EpisodeView/EpisodeView';
-import PodcastView from '../views/PodcastView/PodcastView';
+import Layout from 'layout/Layout';
+import HomeView from 'views/HomeView/HomeView';
+import EpisodeView from 'views/PodcastView/EpisodeView/EpisodeView';
+import PodcastView from 'views/PodcastView/PodcastView';
 
 export const HOME_PATH = '/';
 export const PODCAST_PATH = '/podcast';
@@ -19,7 +19,8 @@ const AppRouter = () => {
             element={<PodcastView />}
           />
           <Route
-            path={`${PODCAST_PATH}/:podcastId/${EPISODE_PATH}/:episodeId`}
+            // path='/podcast/:podcastId/episode/:episodeId'
+            path={`${PODCAST_PATH}/:podcastId${EPISODE_PATH}/:episodeId`}
             element={<EpisodeView />}
           />
         </Route>

@@ -1,11 +1,11 @@
 import { Link, useParams } from 'react-router-dom';
-import { useAppContext } from '../../context/app-context';
-import DetailsLayout from '../../layout/DetailsLayout/DetailsLayout';
-import { formatDate, formatTime } from '../../util/functions';
+import { useAppContext } from 'context/app-context';
+import useSelectedPodcast from 'hooks/useSelectedPodcast';
+import DetailsLayout from 'layout/DetailsLayout/DetailsLayout';
+import { formatDate, formatTime } from 'util/functions';
+import { EPISODE_PATH, PODCAST_PATH } from 'routes';
 
 import styles from './PodcastView.module.css';
-import useSelectedPodcast from '../../hooks/useSelectedPodcast';
-import { EPISODE_PATH, PODCAST_PATH } from '../../routes';
 
 const PodcastView = () => {
   const { loading, setLoading, entries, currentPodcast, setCurrentPodcast } =
@@ -48,6 +48,7 @@ const PodcastView = () => {
                   <td>
                     <Link
                       to={`${PODCAST_PATH}/${podcastId}${EPISODE_PATH}/${episode.trackId}`}
+                      // to={`${PODCAST_PATH}/${podcastId}${EPISODE_PATH}/${episode.trackId}`}
                       state={episode}
                     >
                       {episode.trackName}

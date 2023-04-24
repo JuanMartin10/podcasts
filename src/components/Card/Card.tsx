@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
-import { type AppEntry } from '../../models/types';
-import { PODCAST_PATH } from '../../routes';
+import { type AppEntry } from 'models/types';
+import { PODCAST_PATH } from 'routes';
 import styles from './Card.module.css';
 
 interface CardProps {

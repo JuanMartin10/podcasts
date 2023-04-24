@@ -1,5 +1,5 @@
-import { type Feed } from '../models/api-types';
-import { type ResultPodcast } from '../models/api-podcast.types';
+import { type Feed } from 'models/api-types';
+import { type ResultPodcast } from 'models/api-podcast.types';
 
 const API_URL = `https://api.allorigins.win/raw?url=${encodeURIComponent(
   'https://itunes.apple.com/us/rss/toppodcasts/limit=100/genre=1310/json'

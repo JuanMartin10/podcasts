@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 
-import { fetchEpisodesByPodcast } from '../services';
+import { fetchEpisodesByPodcast } from 'services';
 
-import { type AppEntry } from '../models/types';
-import { type ResultPodcast } from '../models/api-podcast.types';
+import { type AppEntry } from 'models/types';
+import { type ResultPodcast } from 'models/api-podcast.types';
 import useLocalStorage from './useLocalStorage';
 
 interface UseSelectedPodcastProps {

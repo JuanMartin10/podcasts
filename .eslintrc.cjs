@@ -1,4 +1,9 @@
 module.exports = {
+  'import/resolver': {
+    typescript: {
+      project: './tsconfig.json',
+    },
+  },
   env: {
     browser: true,
     es2021: true,
