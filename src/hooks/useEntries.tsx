@@ -4,7 +4,7 @@ import { fetchFeed } from '../services';
 import { type AppEntry } from '../models/types';
 
 export const useEntries = ({ loading, setLoading }: any) => {
-  const [entries, setEntries] = useState<AppEntry[] | undefined>();
+  const [entries, setEntries] = useState<AppEntry[]>([]);
   const [expirationValue, setExpirationValue] = useExpirationStorage();
   const [entriesStorage, setEntriesStorage] = useEntriesStorage();
 
@@ -48,10 +48,8 @@ export const useEntries = ({ loading, setLoading }: any) => {
   }, []);
 
   return {
-    // loading,
     entries,
     getEntries,
     setEntries,
-    // setLoading,
   };
 };

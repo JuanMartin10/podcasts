@@ -4,18 +4,24 @@ import HomeView from '../views/HomeView/HomeView';
 import EpisodeView from '../views/PodcastView/EpisodeView/EpisodeView';
 import PodcastView from '../views/PodcastView/PodcastView';
 
+export const HOME_PATH = '/';
+export const PODCAST_PATH = '/podcast';
+export const EPISODE_PATH = '/episode';
+
 const AppRouter = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path='/' element={<Layout />}>
+        <Route path={HOME_PATH} element={<Layout />}>
           <Route index element={<HomeView />} />
-          <Route path='/podcast/:podcastId' element={<PodcastView />} />
           <Route
-            path='/podcast/:podcastId/episode/:episodeId'
+            path={`${PODCAST_PATH}/:podcastId`}
+            element={<PodcastView />}
+          />
+          <Route
+            path={`${PODCAST_PATH}/:podcastId/${EPISODE_PATH}/:episodeId`}
             element={<EpisodeView />}
           />
-          {/* <Route path='*' element={<Navigate to='/' replace />} /> */}
         </Route>
       </Routes>
     </BrowserRouter>

@@ -7,37 +7,34 @@ import styles from './HomeView.module.css';
 
 const HomeView = () => {
   const { entries, loading } = useAppContext();
-  const { search: filterEntries, updateSearch: setFilterEntries } = useSearch();
+  const { search: searchText, updateSearch: setSearchText } = useSearch();
+
+  const filterEntryByQuery = (query: string) =>
+    query.toLowerCase().includes(searchText.toLocaleLowerCase());
 
   const filteredEntries = useMemo(() => {
-    if (entries !== undefined) {
-      return filterEntries !== undefined && entries.length > 0
-        ? entries?.filter(el =>
-            el.title.toLowerCase().includes(filterEntries.toLocaleLowerCase())
-          )
-        : entries;
-    }
-  }, [entries, filterEntries]);
+    return entries.filter(
+      entry =>
+        filterEntryByQuery(entry.title) || filterEntryByQuery(entry.artist)
+    );
+  }, [entries, searchText]);
 
   return (
     <div>
       <div className={styles.header}>
-        {filteredEntries !== undefined && (
-          <span className={styles.count}>{filteredEntries?.length}</span>
-        )}
+        <span className={styles.count}>{filteredEntries?.length}</span>
         <SearchBar
-          value={filterEntries}
-          onChangeEntries={(e: any) => {
-            setFilterEntries(e.target.value);
+          value={searchText}
+          onChangeEntries={(e: React.ChangeEvent<HTMLInputElement>) => {
+            setSearchText(e.target.value);
           }}
         />
       </div>
       <div className={styles.main}>
-        {filteredEntries === undefined ||
-        (filteredEntries.length > 0 && loading) ? (
-          <p>Cargando...</p>
+        {loading ? (
+          <p>Loading data...</p>
         ) : (
-          filteredEntries?.map(en => <Card key={en.id} entry={en} />)
+          filteredEntries?.map(entry => <Card key={entry.id} entry={entry} />)
         )}
       </div>
     </div>

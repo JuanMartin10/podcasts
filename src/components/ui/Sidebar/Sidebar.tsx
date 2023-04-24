@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { type AppEntry } from '../../../models/types';
 import styles from './Sidebar.module.css';
+import { PODCAST_PATH } from '../../../routes';
 
 interface SidebarProps {
   currentPodcast: AppEntry;
@@ -8,7 +9,7 @@ interface SidebarProps {
 const Sidebar: React.FC<SidebarProps> = ({ currentPodcast }) => {
   return (
     <div className={styles.sidebar}>
-      <Link to={`/podcast/${currentPodcast.id}`} className={styles.link}>
+      <Link to={`${PODCAST_PATH}/${currentPodcast.id}`} className={styles.link}>
         <img
           src={currentPodcast.image}
           alt={currentPodcast.title}
@@ -16,7 +17,10 @@ const Sidebar: React.FC<SidebarProps> = ({ currentPodcast }) => {
         />
       </Link>
       <div className={styles.descriptionContainer}>
-        <Link to={`/podcast/${currentPodcast.id}`} className={styles.link}>
+        <Link
+          to={`${PODCAST_PATH}/${currentPodcast.id}`}
+          className={styles.link}
+        >
           <h2 className={styles.title}>{currentPodcast.title}</h2>
           <p className={styles.author}>
             <span>by</span> {currentPodcast.artist}

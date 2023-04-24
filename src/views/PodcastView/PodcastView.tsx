@@ -1,47 +1,33 @@
-import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useAppContext } from '../../context/app-context';
 import DetailsLayout from '../../layout/DetailsLayout/DetailsLayout';
-import { type ResultPodcast } from '../../models/api-podcast.types';
 import { formatDate, formatTime } from '../../util/functions';
-import { fetchEpisodesByPodcast } from '../../services';
+
 import styles from './PodcastView.module.css';
+import useSelectedPodcast from '../../hooks/useSelectedPodcast';
+import { EPISODE_PATH, PODCAST_PATH } from '../../routes';
 
 const PodcastView = () => {
-  const { entries, currentPodcast, setLoading, setCurrentPodcast } =
+  const { loading, setLoading, entries, currentPodcast, setCurrentPodcast } =
     useAppContext();
-  const [episodes, setEpisodes] = useState<ResultPodcast[] | undefined>();
+
   const { podcastId } = useParams();
 
-  useEffect(() => {
-    if (entries === null) return;
-    setLoading(true);
-    const podcastFromStorage = localStorage.getItem(`podcast_${podcastId}`);
+  const { currentPodcast: cPodcast, episodes } = useSelectedPodcast({
+    podcastId,
+    entries,
+    loading,
+    currentPodcast,
+    setLoading,
+    setCurrentPodcast,
+  });
 
-    if (podcastFromStorage === null) {
-      const p = entries?.find((el: any) => el.id === podcastId?.toString());
-      const objToSave = { podcast: p };
-      fetchEpisodesByPodcast(podcastId as string).then(res => {
-        setCurrentPodcast(p);
-        setEpisodes(res);
-        const obj = { ...objToSave, episodes: res };
-        localStorage.setItem(`podcast_${podcastId}`, JSON.stringify(obj));
-        setLoading(false);
-      });
-    } else {
-      const parse = JSON.parse(podcastFromStorage);
-      setCurrentPodcast(parse.podcast);
-      setEpisodes(parse.episodes);
-      setLoading(false);
-    }
-  }, [entries]);
-
-  return currentPodcast == null ? (
+  return cPodcast == null ? (
     <div className={styles.center}>
-      <p>Cargando datos...</p>
+      <p>Loading data...</p>
     </div>
   ) : (
-    <DetailsLayout currentPodcast={currentPodcast}>
+    <DetailsLayout currentPodcast={cPodcast}>
       <div className={styles.episodesContainer}>
         <h3 className={styles.episodesTitle}>Episodes: {episodes?.length}</h3>
       </div>
@@ -56,12 +42,12 @@ const PodcastView = () => {
           </thead>
           <tbody className={styles.table}>
             {episodes != null &&
-              episodes?.length > 0 &&
+              episodes.length > 0 &&
               episodes.map((episode: any) => (
                 <tr key={`${episode.trackId} ${episode.trackName}`}>
                   <td>
                     <Link
-                      to={`/podcast/${podcastId}/episode/${episode.trackId}`}
+                      to={`${PODCAST_PATH}/${podcastId}${EPISODE_PATH}/${episode.trackId}`}
                       state={episode}
                     >
                       {episode.trackName}

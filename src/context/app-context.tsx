@@ -4,11 +4,11 @@ import { type AppEntry } from '../models/types';
 
 export interface AppContextTypes {
   loading: boolean;
-  entries: AppEntry[] | undefined;
+  entries: AppEntry[];
   currentPodcast: AppEntry | undefined;
   getEntries: () => Promise<void>;
   setLoading: React.Dispatch<React.SetStateAction<boolean>>;
-  setEntries: React.Dispatch<React.SetStateAction<AppEntry[] | undefined>>;
+  setEntries: React.Dispatch<React.SetStateAction<AppEntry[]>>;
   setCurrentPodcast: React.Dispatch<React.SetStateAction<AppEntry | undefined>>;
 }
 

@@ -4,6 +4,7 @@ import { BounceLoader } from 'react-spinners';
 
 import styles from './Header.module.css';
 import { useAppContext } from '../../../context/app-context';
+import { HOME_PATH } from '../../../routes';
 
 const Header = () => {
   const [color] = useState('#508fcb');
@@ -12,7 +13,7 @@ const Header = () => {
   return (
     <header className={styles.header}>
       <div className={styles.logo}>
-        <Link to='/'>Podcaster</Link>
+        <Link to={HOME_PATH}>Podcaster</Link>
       </div>
       <div className={styles.shoppingBag}>
         {Boolean(loading) && (
