@@ -1,0 +1,96 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`<PodcastView /> > Should match the snapshot 1`] = `
+<div>
+  <div
+    class="_container_453f42"
+  >
+    <div
+      class="_sidebar_b37e70"
+    >
+      <a
+        class="_link_b37e70"
+        href="/podcast/1574029840"
+      >
+        <img
+          alt="Friday Night Karaoke"
+          class="_image_b37e70"
+          src="https://is1-ssl.mzstatic.com/image/thumb/Podcasts116/v4/5b/88/a1/5b88a186-ce6a-5268-cc49-8e896c737729/mza_7354436562524572096.jpg/55x55bb.png"
+        />
+      </a>
+      <div
+        class="_descriptionContainer_b37e70"
+      >
+        <a
+          class="_link_b37e70"
+          href="/podcast/1574029840"
+        >
+          <h2
+            class="_title_b37e70"
+          >
+            Friday Night Karaoke
+          </h2>
+          <p
+            class="_author_b37e70"
+          >
+            <span>
+              by
+            </span>
+             
+            Friday Night Karaoke
+          </p>
+        </a>
+      </div>
+      <div
+        class="_descriptionContainer_b37e70"
+      >
+        <p>
+          Description:
+        </p>
+        <p
+          class="_description_b37e70"
+        >
+          No ads, no gimmicks - just Karaoke! Friday Night Karaoke features amateur artists every week singing the songs they love, just for you! Get your weekly dose of vocal expression. Get featured on the podcast by joining the official Friday Night Karaoke Facebook group at https://www.facebook.com/groups/fridaynightkaraoke!
+        </p>
+      </div>
+    </div>
+    <div
+      class="_main_453f42"
+    >
+      <div
+        class="_episodesContainer_4cfd7d"
+      >
+        <h3
+          class="_episodesTitle_4cfd7d"
+        >
+          Episodes: 
+        </h3>
+      </div>
+      <div
+        class="_episodesList_4cfd7d"
+      >
+        <table
+          width="100%"
+        >
+          <thead>
+            <tr>
+              <th>
+                Title
+              </th>
+              <th>
+                Date
+              </th>
+              <th>
+                Duration
+              </th>
+            </tr>
+          </thead>
+          <tbody
+            class="_table_4cfd7d"
+          />
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+`;

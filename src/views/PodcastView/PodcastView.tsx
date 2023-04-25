@@ -22,7 +22,7 @@ const PodcastView = () => {
     setCurrentPodcast,
   });
 
-  return cPodcast == null ? (
+  return cPodcast == undefined ? (
     <div className={styles.center}>
       <p>Loading data...</p>
     </div>
@@ -48,7 +48,6 @@ const PodcastView = () => {
                   <td>
                     <Link
                       to={`${PODCAST_PATH}/${podcastId}${EPISODE_PATH}/${episode.trackId}`}
-                      // to={`${PODCAST_PATH}/${podcastId}${EPISODE_PATH}/${episode.trackId}`}
                       state={episode}
                     >
                       {episode.trackName}

@@ -6,7 +6,6 @@ export interface AppContextTypes {
   loading: boolean;
   entries: AppEntry[];
   currentPodcast: AppEntry | undefined;
-  getEntries: () => Promise<void>;
   setLoading: React.Dispatch<React.SetStateAction<boolean>>;
   setEntries: React.Dispatch<React.SetStateAction<AppEntry[]>>;
   setCurrentPodcast: React.Dispatch<React.SetStateAction<AppEntry | undefined>>;
@@ -16,7 +15,7 @@ interface ContextProps {
   children: React.ReactNode;
 }
 
-const AppContext = createContext<AppContextTypes | undefined>(undefined);
+export const AppContext = createContext<AppContextTypes | undefined>(undefined);
 
 export const AppProvider: React.FC<ContextProps> = ({ children }) => {
   const [loading, setLoading] = useState(false);
@@ -33,7 +32,6 @@ export const AppProvider: React.FC<ContextProps> = ({ children }) => {
         loading,
         entries,
         currentPodcast,
-        getEntries,
         setLoading,
         setEntries,
         setCurrentPodcast,

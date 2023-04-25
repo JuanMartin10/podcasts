@@ -1,4 +1,4 @@
-export interface Welcome {
+export interface ResponseApiPodcast {
   resultCount: number;
   results: ResultPodcast[];
 }

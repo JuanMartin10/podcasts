@@ -7,10 +7,14 @@ const EpisodeView = () => {
   const { currentPodcast } = useAppContext();
   const { state: episode } = useLocation();
 
-  return (
+  return currentPodcast == undefined ? (
+    <div className={styles.center}>
+      <p>Loading data...</p>
+    </div>
+  ) : (
     <DetailsLayout currentPodcast={currentPodcast}>
       <div className={styles.play}>
-        <h3>{episode?.trackName}</h3>
+        <h3>{episode.trackName}</h3>
         {Boolean(episode?.description) && (
           <p
             dangerouslySetInnerHTML={{

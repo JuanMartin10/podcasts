@@ -1,0 +1,171 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`<HomeView /> > Should match the snapshot 1`] = `
+<div>
+  <div>
+    <div
+      class="_header_970eaf"
+    >
+      <span
+        class="_count_970eaf"
+      >
+        4
+      </span>
+      <div
+        class="_search_54eea8"
+      >
+        <input
+          class="_searchTerm_54eea8"
+          placeholder="Filter podcasts"
+          type="text"
+          value=""
+        />
+      </div>
+    </div>
+    <div
+      class="_main_970eaf"
+    >
+      <a
+        href="/podcast/1535809341"
+        style="text-decoration: none;"
+      >
+        <div
+          class="_item_1f2933"
+        >
+          <div
+            class="_image_1f2933"
+          >
+            <img
+              alt="The Joe Budden Podcast-https://is3-ssl.mzstatic.com/image/thumb/Podcasts113/v4/f2/21/fa/f221fabd-017f-5125-633b-f1fe4f39802a/mza_182995249085044287.jpg/55x55bb.png"
+              src="https://is3-ssl.mzstatic.com/image/thumb/Podcasts113/v4/f2/21/fa/f221fabd-017f-5125-633b-f1fe4f39802a/mza_182995249085044287.jpg/55x55bb.png"
+            />
+          </div>
+          <div
+            class="_info_1f2933"
+          >
+            <div
+              class="_titles_1f2933"
+            >
+              <h3
+                class="_title_1f2933"
+              >
+                The Joe Budden Podcast
+              </h3>
+              <p
+                class="_author_1f2933"
+              >
+                Author: The Joe Budden Network
+              </p>
+            </div>
+          </div>
+        </div>
+      </a>
+      <a
+        href="/podcast/1678378239"
+        style="text-decoration: none;"
+      >
+        <div
+          class="_item_1f2933"
+        >
+          <div
+            class="_image_1f2933"
+          >
+            <img
+              alt="This Little Light-https://is3-ssl.mzstatic.com/image/thumb/Podcasts116/v4/f6/cf/66/f6cf66f5-8696-1903-f3b3-e95c507c8e9c/mza_5620205623101925377.jpg/55x55bb.png"
+              src="https://is3-ssl.mzstatic.com/image/thumb/Podcasts116/v4/f6/cf/66/f6cf66f5-8696-1903-f3b3-e95c507c8e9c/mza_5620205623101925377.jpg/55x55bb.png"
+            />
+          </div>
+          <div
+            class="_info_1f2933"
+          >
+            <div
+              class="_titles_1f2933"
+            >
+              <h3
+                class="_title_1f2933"
+              >
+                This Little Light
+              </h3>
+              <p
+                class="_author_1f2933"
+              >
+                Author: Cadence13 and Parallel
+              </p>
+            </div>
+          </div>
+        </div>
+      </a>
+      <a
+        href="/podcast/1096830182"
+        style="text-decoration: none;"
+      >
+        <div
+          class="_item_1f2933"
+        >
+          <div
+            class="_image_1f2933"
+          >
+            <img
+              alt="Drink Champs-https://is4-ssl.mzstatic.com/image/thumb/Podcasts113/v4/46/39/69/46396977-6d87-f120-6432-6373dcefdf9b/mza_6589930413574180525.jpg/55x55bb.png"
+              src="https://is4-ssl.mzstatic.com/image/thumb/Podcasts113/v4/46/39/69/46396977-6d87-f120-6432-6373dcefdf9b/mza_6589930413574180525.jpg/55x55bb.png"
+            />
+          </div>
+          <div
+            class="_info_1f2933"
+          >
+            <div
+              class="_titles_1f2933"
+            >
+              <h3
+                class="_title_1f2933"
+              >
+                Drink Champs
+              </h3>
+              <p
+                class="_author_1f2933"
+              >
+                Author: Interval Presents
+              </p>
+            </div>
+          </div>
+        </div>
+      </a>
+      <a
+        href="/podcast/1460157002"
+        style="text-decoration: none;"
+      >
+        <div
+          class="_item_1f2933"
+        >
+          <div
+            class="_image_1f2933"
+          >
+            <img
+              alt="Million Dollaz Worth Of Game-https://is1-ssl.mzstatic.com/image/thumb/Podcasts125/v4/7b/cf/f6/7bcff6bb-5f99-6c2f-c6c5-3a9799f3df21/mza_8544742664200824246.jpg/55x55bb.png"
+              src="https://is1-ssl.mzstatic.com/image/thumb/Podcasts125/v4/7b/cf/f6/7bcff6bb-5f99-6c2f-c6c5-3a9799f3df21/mza_8544742664200824246.jpg/55x55bb.png"
+            />
+          </div>
+          <div
+            class="_info_1f2933"
+          >
+            <div
+              class="_titles_1f2933"
+            >
+              <h3
+                class="_title_1f2933"
+              >
+                Million Dollaz Worth Of Game
+              </h3>
+              <p
+                class="_author_1f2933"
+              >
+                Author: Barstool Sports
+              </p>
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
+`;

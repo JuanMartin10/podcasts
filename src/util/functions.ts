@@ -1,3 +1,5 @@
+import { Feed } from '../models/api-types';
+
 export const formatTime = (ms: number) => {
   let totalSeconds = Math.floor(ms / 1000);
   const hours = Math.floor(totalSeconds / 3600);
@@ -22,3 +24,12 @@ export const formatDate = (dateString: string) => {
 
   return `${day}/${month}/${year}`;
 };
+
+export const formatApiEntries = (apiFeed: Feed) =>
+  apiFeed.entry.map(entry => ({
+    id: entry.id.attributes['im:id'],
+    title: entry['im:name'].label,
+    artist: entry['im:artist'].label,
+    image: entry['im:image'][0].label,
+    summary: entry.summary.label,
+  }));
