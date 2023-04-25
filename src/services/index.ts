@@ -1,5 +1,6 @@
 import { type Feed } from 'models/api-types';
 import { type ResultPodcast } from 'models/api-podcast.types';
+import { fetchApi } from 'util/functions';
 
 const API_URL = `https://api.allorigins.win/raw?url=${encodeURIComponent(
   'https://itunes.apple.com/us/rss/toppodcasts/limit=100/genre=1310/json'
@@ -12,7 +13,7 @@ const API_PODCAST_URL = (id: string) =>
 
 export const fetchFeed = async (): Promise<Feed> => {
   try {
-    const res = await fetch(API_URL);
+    const res = await fetchApi(API_URL);
     const { feed } = (await res.json()) as { feed: Feed };
 
     return feed;
@@ -24,7 +25,7 @@ export const fetchEpisodesByPodcast = async (
   podcastId: string
 ): Promise<ResultPodcast[]> => {
   try {
-    const res = await fetch(API_PODCAST_URL(podcastId));
+    const res = await fetchApi(API_PODCAST_URL(podcastId));
 
     const { results } = (await res.json()) as { results: any };
     return results.map((episode: any) => {

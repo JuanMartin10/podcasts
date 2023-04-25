@@ -15,6 +15,9 @@ export const formatTime = (ms: number) => {
   }
 };
 
+export const fetchApi = (url: string, obj?: any) =>
+  fetch(url, { ...obj, mode: 'cors' });
+
 export const formatDate = (dateString: string) => {
   const date = new Date(dateString);
 
